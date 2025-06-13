@@ -6,10 +6,13 @@ import factories.gear.Weapon;
 import factories.gear.Armor;
 import factories.gear.Banner;
 import model.Orc;
+import java.util.HashSet;
+import java.util.Set;
 
 public abstract class OrcBuilder {
     protected final OrcGearFactory gearFactory;
     protected final Faker faker = new Faker();
+    private static final Set<String> usedNames = new HashSet<>();
     protected String name;
     protected String type;
     protected Weapon weapon;
@@ -25,7 +28,12 @@ public abstract class OrcBuilder {
     }
     
     public OrcBuilder setRandomName() {
-        this.name = faker.lordOfTheRings().character();
+        String generated;
+        do {
+            generated = faker.lordOfTheRings().character();
+        } while (usedNames.contains(generated));
+        usedNames.add(generated);
+        this.name = generated;
         return this;
     }
 

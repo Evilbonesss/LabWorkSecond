@@ -4,7 +4,6 @@ import factories.OrcGearFactory;
 import factories.gear.Bow;
 import factories.gear.Horn;
 
-
 public class DolGuldurOrcBuilder extends OrcBuilder {
     public DolGuldurOrcBuilder(OrcGearFactory gearFactory){
         super(gearFactory);
