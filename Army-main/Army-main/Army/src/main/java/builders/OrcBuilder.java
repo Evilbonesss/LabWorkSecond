@@ -7,12 +7,15 @@ import factories.gear.Armor;
 import factories.gear.Banner;
 import model.Orc;
 import java.util.HashSet;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 public abstract class OrcBuilder {
     protected final OrcGearFactory gearFactory;
     protected final Faker faker = new Faker();
     private static final Set<String> usedNames = new HashSet<>();
+    private static final Map<String, Integer> nameCounters = new HashMap<>();
     protected String name;
     protected String type;
     protected Weapon weapon;
@@ -28,10 +31,13 @@ public abstract class OrcBuilder {
     }
     
     public OrcBuilder setRandomName() {
-        String generated;
-        do {
-            generated = faker.lordOfTheRings().character();
-        } while (usedNames.contains(generated));
+        String base = faker.lordOfTheRings().character();
+        int count = nameCounters.getOrDefault(base, 0);
+        String generated = base;
+        if (count > 0) {
+            generated = base + " " + count;
+        }
+        nameCounters.put(base, count + 1);
         usedNames.add(generated);
         this.name = generated;
         return this;

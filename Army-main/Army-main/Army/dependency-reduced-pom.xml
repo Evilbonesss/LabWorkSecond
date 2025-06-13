@@ -18,7 +18,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>Army</mainClass>
+                  <mainClass>mephi.b23902.i.army.Army</mainClass>
                 </transformer>
               </transformers>
             </configuration>
@@ -28,9 +28,9 @@
     </plugins>
   </build>
   <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.target>22</maven.compiler.target>
     <exec.mainClass>mephi.b23902.i.army.Army</exec.mainClass>
     <maven.compiler.source>22</maven.compiler.source>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 </project>
